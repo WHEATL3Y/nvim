@@ -27,7 +27,7 @@ compilation terminated.
 ```
 Solution
 
-https://stackoverflow.com/questions/39455741/gcc-error-trying-to-exec-cc1plus-execvp-no-such-file-or-directory  return
+https://stackoverflow.com/questions/39455741/gcc-error-trying-to-exec-cc1plus-execvp-no-such-file-or-directory</br>
 Install g++
 
 `sudo dnf install g++`
