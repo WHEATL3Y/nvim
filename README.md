@@ -15,6 +15,8 @@ Neovim Linux Configuration
     - https://github.com/nvim-telescope/telescope.nvim
 - LSP - LSP-Zero
     - https://github.com/VonHeikemen/lsp-zero.nvim
+- Bracket Completion - Auto Pairs 
+    - https://github.com/jiangmiao/auto-pairs
 - Themes
     - Tokyonight - https://github.com/folke/tokyonight.nvim
 
