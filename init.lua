@@ -1,3 +1,4 @@
+require("plugins")
 -- VIM Configuration
 vim.opt.guicursor = ""			-- Wide Cursor
 vim.opt.number = true			-- Line Numbers
