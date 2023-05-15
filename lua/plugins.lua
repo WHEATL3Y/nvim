@@ -25,6 +25,9 @@ return require('packer').startup(function(use) use 'wbthomason/packer.nvim'
     -- Bracket Completion
     use {'jiangmiao/auto-pairs'}
 
+    -- Inteligent Comments
+    use "terrortylor/nvim-comment"
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',

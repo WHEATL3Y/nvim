@@ -17,6 +17,8 @@ Neovim Linux Configuration
     - https://github.com/VonHeikemen/lsp-zero.nvim
 - Bracket Completion - Auto Pairs 
     - https://github.com/jiangmiao/auto-pairs
+- Inteligent Commenting - nvim-comment
+    -  https://github.com/terrortylor/nvim-comment
 - Themes
     - Tokyonight - https://github.com/folke/tokyonight.nvim
 

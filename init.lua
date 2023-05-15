@@ -31,6 +31,9 @@ require("tokyonight").setup({
 })
 vim.cmd[[colorscheme tokyonight]]
 
+--nvim_comment
+require('nvim_comment').setup()
+
 -- Treesitter Config
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
