@@ -14,17 +14,24 @@ vim.opt.expandtab = true		-- Replace tabs with 4 spaces
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)	 -- Return to net_rw
 vim.keymap.set("n", "<C-d>", ":noh<CR>")         -- unhighlight
-vim.keymap.set("i", "<A-h", "ghi")               -- Insert mode left
-vim.keymap.set("i", "<A-j", "gji")               -- Insert mode down 
-vim.keymap.set("i", "<A-k", "gki")               -- Insert mode up 
-vim.keymap.set("i", "<A-l", "gli")               -- Insert mode right 
+vim.keymap.set("i", "<C-h>", "<Left>")           -- Insert mode left
+vim.keymap.set("i", "<C-j>", "<Down>")           -- Insert mode down 
+vim.keymap.set("i", "<C-k>", "<Up>")             -- Insert mode up 
+vim.keymap.set("i", "<C-l>", "<Right>")          -- Insert mode right 
+
+vim.keymap.set({"n", "t"}, "<Tab>", "<C-W>w")
+vim.opt.splitbelow = true                                          -- Set splits to open below editor
+vim.keymap.set({"n", "i"}, "<C-s>", ":15 split term://bash<CR>i")  -- Open Terminal
+-- TODO: This only works in insert, find a way around this
+vim.keymap.set("t", "<C-s>", "<C-\\><C-N>:q<CR>")               -- Close Terminal
+vim.keymap.set("t", "<ESC>", "<C-\\><C-N>")                     -- Exit insert in terminal
 
 -- netrw config
 vim.g.netrw_liststyle = 3       -- tree style listing
 vim.g.netrw_banner = 0          -- remove banner
 vim.g.netrw_winsize = 15
 vim.g.netrw_altv = 1
-vim.keymap.set('n', '<C-b>', ':Lex<CR>')    -- ctrl+c open netrw
+vim.keymap.set('n', '<C-b>', ':Lex<CR>')    -- ctrl+b open netrw
 
 -- Telescope Remaps
 local builtin = require('telescope.builtin')
