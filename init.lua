@@ -25,6 +25,10 @@ vim.keymap.set({"n", "i"}, "<C-s>", ":15 split term://bash<CR>i")  -- Open Termi
 -- TODO: This only works in insert, find a way around this
 vim.keymap.set("t", "<C-s>", "<C-\\><C-N>:q<CR>")               -- Close Terminal
 vim.keymap.set("t", "<ESC>", "<C-\\><C-N>")                     -- Exit insert in terminal
+vim.keymap.set({"t", "i", "n"}, "<A-Up>", "<C-W>+")
+vim.keymap.set({"t", "i", "n"}, "<A-Down>", "<C-W>-")
+vim.keymap.set({"t", "i", "n"}, "<A-Right>", "<C-W>>")
+vim.keymap.set({"t", "i", "n"}, "<A-Left>", "<C-W><")
 
 -- netrw config
 vim.g.netrw_liststyle = 3       -- tree style listing
