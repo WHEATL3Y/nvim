@@ -45,18 +45,30 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+--
 -- Themes
--- https://github.com/folke/tokyonight.nvim
-require("tokyonight").setup({
-	-- Styles: night, storm, day, moon
-	style = "night",
-	light_style = "day"
-})
-vim.cmd[[colorscheme tokyonight]]
+--
+-- Tokyonight
+-- require("tokyonight").setup({
+-- 	-- Styles: night, storm, day, moon
+-- 	style = "night",
+-- 	light_style = "day"
+-- })
+-- vim.cmd[[colorscheme tokyonight]]
 
--- vim.cmd("colorscheme leaf");
+-- gruvbox
+require("gruvbox")
+vim.cmd("colorscheme gruvbox")
 
---nvim_comment
+-- nordic
+-- require("nordic")
+-- vim.cmd("colorscheme nordic")
+
+-- paper color
+-- require("PaperColor")
+-- vim.cmd("colorscheme PaperColor")
+
+-- nvim_comment
 require('nvim_comment').setup()
 
 -- Treesitter Config
@@ -76,6 +88,12 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+-- Lualine config
+require("lualine").setup{
+    options = {
+        icons_enable = true,
+    }
+}
 -- LSP-Zero Config
 local lsp = require('lsp-zero').preset({})
 

@@ -18,8 +18,12 @@ return require('packer').startup(function(use) use 'wbthomason/packer.nvim'
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- Themes
     -- use "daschw/leaf.nvim";
+    use "ellisonleao/gruvbox.nvim"
     use "folke/tokyonight.nvim"
+    use "AlexvZyl/nordic.nvim"
+    use "NLKNguyen/papercolor-theme"
 
     use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
@@ -29,6 +33,11 @@ return require('packer').startup(function(use) use 'wbthomason/packer.nvim'
     -- Inteligent Comments
     use "terrortylor/nvim-comment"
 
+    -- Status line
+    use {
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+        "nvim-lualine/lualine.nvim",
+    }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
