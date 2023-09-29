@@ -18,8 +18,12 @@ vim.keymap.set("i", "<C-h>", "<Left>")           -- Insert mode left
 vim.keymap.set("i", "<C-j>", "<Down>")           -- Insert mode down 
 vim.keymap.set("i", "<C-k>", "<Up>")             -- Insert mode up 
 vim.keymap.set("i", "<C-l>", "<Right>")          -- Insert mode right 
+vim.keymap.set("i", "<C-a>", "<C-o>_")           -- Move to beginning of line (Insert)
+vim.keymap.set("i", "<C-e>", "<C-o>$")           -- Move to end of line (Insert)
+vim.keymap.set("i", "<C-a>", "_")                -- Move to beginning of line (Normal)
+vim.keymap.set("i", "<C-e>", "$")                -- Move to end of line (Normal)
 
-vim.keymap.set({"n", "t"}, "<Tab>", "<C-W>w")
+vim.keymap.set("n", "<Tab>", "<C-W>w")
 vim.opt.splitbelow = true                                          -- Set splits to open below editor
 vim.keymap.set({"n", "i"}, "<C-s>", ":15 split term://bash<CR>i")  -- Open Terminal
 -- TODO: This only works in insert, find a way around this
