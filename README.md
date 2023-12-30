@@ -11,8 +11,6 @@ Neovim Linux Configuration
 # Installed Plugins
 - Plugin Manager - Packer
     - https://github.com/wbthomason/packer.nvim
-- Fuzzy Finder - Telescope
-    - https://github.com/nvim-telescope/telescope.nvim
 - LSP - LSP-Zero
     - https://github.com/VonHeikemen/lsp-zero.nvim
 - Bracket Completion - Auto Pairs 
