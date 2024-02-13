@@ -19,7 +19,7 @@ Neovim Linux Configuration
 - Inteligent Commenting - nvim-comment
     -  https://github.com/terrortylor/nvim-comment
 - Themes
-    - Tokyonight - https://github.com/folke/tokyonight.nvim
+    - Soloarized Osaka (Default) - https://github.com/craftzdog/solarized-osaka.nvim
 
 # Common Issues and Fixes
 Treesitter cc1plus error
