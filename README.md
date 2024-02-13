@@ -3,14 +3,13 @@ Neovim Linux Configuration
 
 # Install
 * Ensure Neovim is installed
-* Clone this repo into `~/.config/`
-* Open nvim and run `:PackerSync` 
+* Clone this repo into `~/AppData/Local/`
 
 # Remaps
 
 # Installed Plugins
-- Plugin Manager - Packer
-    - https://github.com/wbthomason/packer.nvim
+- Plugin Manager - Lazy 
+    - https://github.com/folke/lazy.nvim
 - Fuzzy Finder - Telescope
     - https://github.com/nvim-telescope/telescope.nvim
 - LSP - LSP-Zero
