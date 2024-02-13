@@ -1,13 +1,14 @@
 --
 -- Basics
 --
-vim.opt.guicursor = ""
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.tabstop = 4
+vim.opt.guicursor = ""          -- Block cursor
+vim.opt.number = true           -- Enable line numbers
+vim.opt.relativenumber = true   -- Enable relative line numbers
+vim.opt.tabstop = 4             -- Set tabstop
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = true        -- Change tab into spaces
+vim.g.mapleader = " "           -- Set leader key to space
 
 --
 -- netrw
@@ -33,5 +34,23 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Init
-require("lazy").setup(plugins, opts)
+-- Define Plugins
+local plugins = {
+    -- Theme
+    {"craftzdog/solarized-osaka.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},},
+}
+
+-- Init lazy
+require("lazy").setup(plugins)
+
+--
+-- Theme Configuration
+--
+local osaka_config = {
+    transparent = false,
+}
+require("solarized-osaka").setup(osaka_config)
+vim.cmd[[colorscheme solarized-osaka]]
