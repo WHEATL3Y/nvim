@@ -110,37 +110,41 @@ vim.cmd[[colorscheme solarized-osaka]]
 -- Stuff that doesn't work on Windows
 --
 if not platform == "win" then
-    --
-    -- TreeSitter
-    --
-    local treesitter_config = {
-        ensure_installed = {
-            "c",
-            "lua",
-            "vim",
-            "vimdoc",
-            "query",
-            "rust",
-            "javascript",
-            "html", 
-            "css",
-            "typescript",
-            "java",
-            "json",
-            "python",
-            },
-            highlight = {enable = true},
-            auto_install = true;
-        }
 
-    require("nvim-treesitter.configs").setup(treesitter_config)
+	--
+	-- TreeSitter
+	--
+	local treesitter_config = {
+	    ensure_installed = {
+		"c",
+		"lua",
+		"vim",
+		"vimdoc",
+		"query",
+		"rust",
+		"javascript",
+		"html", 
+		"css",
+		"typescript",
+		"svelte",
+		"java",
+		"json",
+		"python",
+		},
+		highlight = {enable = true},
+		auto_install = true;
+	    }
 
-    --
-    -- Comment
-    --
+	require("nvim-treesitter.configs").setup(treesitter_config)
 
-    require("Comment").setup()
+	--
+	-- Comment
+	--
+
+	require("Comment").setup()
+
 end
+
 
 --
 -- Lua Line 

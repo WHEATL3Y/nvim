@@ -41,9 +41,15 @@ Install g++
 `sudo dnf install g++`
 
 ---
+Installing C compiler in Windows
+This doesn't solve a specific issue, it sovles almost every issue with Neovim and Windows
+1. Run the following in powershell (Admin)
+    1. `winget install llvm`
+1. Start neovim in a refreshed environment (`refreshenv`)
+
+---
 Windows
 
 The following plugins do not currently work on Windows, troubleshooting is ongoing
 - LSP-Zero/Mason
-- nvim-treesitter 
 - nvim-comment
