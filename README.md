@@ -39,6 +39,7 @@ https://stackoverflow.com/questions/39455741/gcc-error-trying-to-exec-cc1plus-ex
 Install g++
 
 `sudo dnf install g++`
+
 ---
 Windows
 
