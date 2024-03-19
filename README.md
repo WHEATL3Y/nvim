@@ -10,11 +10,17 @@ Neovim Linux Configuration
 # Remaps
 
 # Installed Plugins
+<<<<<<< HEAD
 - Plugin Manager - Lazy 
     - https://github.com/folke/lazy.nvim
 - Syntax Highlighting - nvim-treesitter
     - https://github.com/nvim-treesitter/nvim-treesitter
 - LSP - LSP-Zero/Mason
+=======
+- Plugin Manager - Packer
+    - https://github.com/wbthomason/packer.nvim
+- LSP - LSP-Zero
+>>>>>>> b6481bdb394234927b6d4a80c181488c49bb3932
     - https://github.com/VonHeikemen/lsp-zero.nvim
     - https://github.com/williamboman/mason.nvim
 - Status Line - LuaLine
