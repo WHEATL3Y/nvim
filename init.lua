@@ -17,6 +17,27 @@ vim.g.netrw_liststyle = 3   -- tree style
 vim.g.netrw_banner = 0      -- remove banner
 
 --
+-- Remaps
+--
+
+-- Esc to move from terminal to normal mode
+vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n>", {noremap=true})
+
+--
+-- Get Platform
+--
+
+local binaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
+local platform = ""
+if binaryFormat == "dll" then
+    platform = "win"
+elseif binaryFormat == "so" then
+    platform = "linux"
+elseif binaryFormat == "dylib" then
+    platform = "macos"
+end
+
+--
 -- Package manager (lazy.nvim)
 --
 
@@ -40,7 +61,37 @@ local plugins = {
     {"craftzdog/solarized-osaka.nvim",
       lazy = false,
       priority = 1000,
-      opts = {},},
+      opts = {},
+    },
+
+    -- LSP Management (LSP Zero/Mason)
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    {"VonHeikemen/lsp-zero.nvim", branch = "v3.x"},
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/nvim-cmp",
+    "L3MON4D3/LuaSnip",
+
+    -- Syntax Highlight (TreeSitter)
+    {"nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",      
+    },
+
+    -- Bracket Compleation (Lexima)
+    "cohama/lexima.vim",
+
+    -- Comments
+    {
+        "numToStr/Comment.nvim",
+        lazy = false,
+    },
+
+    -- Tabline/Status line
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = {"nvim-tree/nvim-web-devicons"},
+    },
 }
 
 -- Init lazy
@@ -54,3 +105,49 @@ local osaka_config = {
 }
 require("solarized-osaka").setup(osaka_config)
 vim.cmd[[colorscheme solarized-osaka]]
+
+-- 
+-- Stuff that doesn't work on Windows
+--
+if not platform == "win" then
+    --
+    -- TreeSitter
+    --
+    local treesitter_config = {
+        ensure_installed = {
+            "c",
+            "lua",
+            "vim",
+            "vimdoc",
+            "query",
+            "rust",
+            "javascript",
+            "html", 
+            "css",
+            "typescript",
+            "java",
+            "json",
+            "python",
+            },
+            highlight = {enable = true},
+            auto_install = true;
+        }
+
+    require("nvim-treesitter.configs").setup(treesitter_config)
+
+    --
+    -- Comment
+    --
+
+    require("Comment").setup()
+end
+
+--
+-- Lua Line 
+--
+local lualine_config = {
+    sections = {
+        lualine_c = {"filename", "buffers"},
+    }
+}
+require("lualine").setup(lualine_config)

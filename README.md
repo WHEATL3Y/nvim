@@ -2,18 +2,23 @@
 Neovim Linux Configuration
 
 # Install
-* Ensure Neovim is installed
-* Clone this repo into `~/AppData/Local/`
+- Ensure Neovim is installed
+- Clone this repo into
+    - `~/AppData/Local/` (Windows)
+    - `~/.config/` (Linux)
 
 # Remaps
 
 # Installed Plugins
 - Plugin Manager - Lazy 
     - https://github.com/folke/lazy.nvim
-- Fuzzy Finder - Telescope
-    - https://github.com/nvim-telescope/telescope.nvim
-- LSP - LSP-Zero
+- Syntax Highlighting - nvim-treesitter
+    - https://github.com/nvim-treesitter/nvim-treesitter
+- LSP - LSP-Zero/Mason
     - https://github.com/VonHeikemen/lsp-zero.nvim
+    - https://github.com/williamboman/mason.nvim
+- Status Line - LuaLine
+     - https://github.com/nvim-lualine/lualine.nvim
 - Bracket Completion - Auto Pairs 
     - https://github.com/jiangmiao/auto-pairs
 - Inteligent Commenting - nvim-comment
@@ -34,3 +39,10 @@ https://stackoverflow.com/questions/39455741/gcc-error-trying-to-exec-cc1plus-ex
 Install g++
 
 `sudo dnf install g++`
+---
+Windows
+
+The following plugins do not currently work on Windows, troubleshooting is ongoing
+- LSP-Zero/Mason
+- nvim-treesitter 
+- nvim-comment
