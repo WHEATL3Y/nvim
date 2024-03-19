@@ -1,15 +1,47 @@
-require("plugins")
--- VIM Configuration
-vim.opt.guicursor = ""			-- Wide Cursor
-vim.opt.number = true			-- Line Numbers
-vim.opt.relativenumber = true	-- Relative Line Numbers
-
-vim.opt.tabstop = 4			    -- 4 space tabs
+--
+-- Basics
+--
+vim.opt.guicursor = ""          -- Block cursor
+vim.opt.number = true           -- Enable line numbers
+vim.opt.relativenumber = true   -- Enable relative line numbers
+vim.opt.tabstop = 4             -- Set tabstop
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true		-- Replace tabs with 4 spaces
+vim.opt.expandtab = true        -- Change tab into spaces
+vim.g.mapleader = " "           -- Set leader key to space
 
+--
+-- netrw
+--
+vim.g.netrw_liststyle = 3   -- tree style
+vim.g.netrw_banner = 0      -- remove banner
+
+--
 -- Remaps
+<<<<<<< HEAD
+--
+
+-- Esc to move from terminal to normal mode
+vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n>", {noremap=true})
+
+--
+-- Get Platform
+--
+
+local binaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
+local platform = ""
+if binaryFormat == "dll" then
+    platform = "win"
+elseif binaryFormat == "so" then
+    platform = "linux"
+elseif binaryFormat == "dylib" then
+    platform = "macos"
+end
+
+--
+-- Package manager (lazy.nvim)
+--
+=======
 -- Neovim Remaps
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)	 -- Return to net_rw
@@ -83,19 +115,65 @@ require'nvim-treesitter.configs'.setup {
       "vim",
       "vimdoc",
   },
+>>>>>>> b6481bdb394234927b6d4a80c181488c49bb3932
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+-- Bootstrap
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+-- Define Plugins
+local plugins = {
+    -- Theme
+    {"craftzdog/solarized-osaka.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
 
-  highlight = {
-    enable = true,
-  },
+    -- LSP Management (LSP Zero/Mason)
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    {"VonHeikemen/lsp-zero.nvim", branch = "v3.x"},
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/nvim-cmp",
+    "L3MON4D3/LuaSnip",
+
+    -- Syntax Highlight (TreeSitter)
+    {"nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",      
+    },
+
+    -- Bracket Compleation (Lexima)
+    "cohama/lexima.vim",
+
+    -- Comments
+    {
+        "numToStr/Comment.nvim",
+        lazy = false,
+    },
+
+    -- Tabline/Status line
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = {"nvim-tree/nvim-web-devicons"},
+    },
 }
 
+<<<<<<< HEAD
+-- Init lazy
+require("lazy").setup(plugins)
+=======
 -- Lualine config
 require("lualine").setup{
     options = {
@@ -104,11 +182,59 @@ require("lualine").setup{
 }
 -- LSP-Zero Config
 local lsp = require('lsp-zero').preset({})
+>>>>>>> b6481bdb394234927b6d4a80c181488c49bb3932
 
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
-end)
+--
+-- Theme Configuration
+--
+local osaka_config = {
+    transparent = false,
+}
+require("solarized-osaka").setup(osaka_config)
+vim.cmd[[colorscheme solarized-osaka]]
 
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-lsp.setup()
+-- 
+-- Stuff that doesn't work on Windows
+--
+if not platform == "win" then
+    --
+    -- TreeSitter
+    --
+    local treesitter_config = {
+        ensure_installed = {
+            "c",
+            "lua",
+            "vim",
+            "vimdoc",
+            "query",
+            "rust",
+            "javascript",
+            "html", 
+            "css",
+            "typescript",
+            "java",
+            "json",
+            "python",
+            },
+            highlight = {enable = true},
+            auto_install = true;
+        }
+
+    require("nvim-treesitter.configs").setup(treesitter_config)
+
+    --
+    -- Comment
+    --
+
+    require("Comment").setup()
+end
+
+--
+-- Lua Line 
+--
+local lualine_config = {
+    sections = {
+        lualine_c = {"filename", "buffers"},
+    }
+}
+require("lualine").setup(lualine_config)
