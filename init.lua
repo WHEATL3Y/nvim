@@ -13,8 +13,8 @@ vim.g.mapleader = " "           -- Set leader key to space
 --
 -- netrw
 --
-vim.g.netrw_liststyle = 3   -- tree style
-vim.g.netrw_banner = 0      -- remove banner
+vim.g.netrw_liststyle = 3       -- tree style
+vim.g.netrw_banner = 0          -- remove banner
 
 --
 -- Remaps
@@ -22,6 +22,12 @@ vim.g.netrw_banner = 0      -- remove banner
 
 -- Esc to move from terminal to normal mode
 vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n>", {noremap=true})
+
+-- Move between splits using CTRL+H,J,K,L
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-W><C-H>", {noremap=true})
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-W><C-J>", {noremap=true})
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-W><C-K>", {noremap=true})
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-W><C-L>", {noremap=true})
 
 --
 -- Get Platform
