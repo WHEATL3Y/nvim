@@ -84,6 +84,12 @@ local plugins = {
         build = ":TSUpdate",
     },
 
+    -- Fuzzy Finder (Telescope)
+    {"nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {"nvim-lua/plenary.nvim"}
+    },
+
     -- Bracket Compleation (Lexima)
     "cohama/lexima.vim",
 
@@ -158,6 +164,19 @@ local treesitter_config = {
     auto_install = true,
     }
 require("nvim-treesitter.configs").setup(treesitter_config)
+
+--
+-- Telescope
+--
+local telescope_config = {
+
+}
+require("telescope").setup(telescope_config)   
+local builtin = require ("telescope.builtin")
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 --
 -- Comment

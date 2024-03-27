@@ -2,7 +2,7 @@
 Neovim Configuration
 
 # Install
-- Ensure Neovim is installed
+- Install Neovim 
 - Clone this repo into
     - `~/AppData/Local/` (Windows)
     - `~/.config/` (Linux)
@@ -17,6 +17,8 @@ Neovim Configuration
 - LSP - LSP-Zero/Mason
     - https://github.com/VonHeikemen/lsp-zero.nvim
     - https://github.com/williamboman/mason.nvim
+- Fuzzy Finder - Telescope
+    - https://github.com/nvim-telescope/telescope.nvim
 - Status Line - LuaLine
      - https://github.com/nvim-lualine/lualine.nvim
 - Bracket Completion - Auto Pairs 
@@ -43,6 +45,6 @@ Install g++
 ---
 Installing C compiler in Windows
 
-This is required for tree-sitter to work, similar to issue above but more of a pain in the ass.
+This is required for tree-sitter to work. Similar to issue above but more of a pain in the ass.
 Use the following link to download and install Windows C/C++ build tools
 [Installing VS Build Tools](https://notes.jacobchristensen.me:443/s/31a3f53c-8005-468c-b66f-dc943dc04034)
