@@ -1,5 +1,5 @@
 # nvim
-Neovim Linux Configuration
+Neovim Configuration
 
 # Install
 - Ensure Neovim is installed
@@ -42,13 +42,7 @@ Install g++
 
 ---
 Installing C compiler in Windows
-This doesn't solve a specific issue, it sovles almost every issue with Neovim and Windows
-1. Run the following in powershell (Admin)
-    1. `winget install llvm`
-1. Start neovim in a refreshed environment (`refreshenv`)
 
----
-Windows
-
-The following plugins do not currently work on Windows, troubleshooting is ongoing
-- nvim-comment
+This is required for tree-sitter to work, similar to issue above but more of a pain in the ass.
+Use the following link to download and install Windows C/C++ build tools
+[Installing VS Build Tools](https://notes.jacobchristensen.me:443/s/31a3f53c-8005-468c-b66f-dc943dc04034)
