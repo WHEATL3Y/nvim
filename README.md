@@ -51,5 +51,4 @@ This doesn't solve a specific issue, it sovles almost every issue with Neovim an
 Windows
 
 The following plugins do not currently work on Windows, troubleshooting is ongoing
-- LSP-Zero/Mason
 - nvim-comment

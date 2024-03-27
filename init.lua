@@ -75,7 +75,7 @@ local plugins = {
 
     -- Syntax Highlight (TreeSitter)
     {"nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",      
+        build = ":TSUpdate",
     },
 
     -- Bracket Compleation (Lexima)
@@ -126,44 +126,37 @@ handlers = {
 }
 })
 
--- 
--- Stuff that doesn't work on Windows
 --
-if not (platform == "win") then
-	--
-	-- TreeSitter
-	--
-	local treesitter_config = {
-	    ensure_installed = {
-		"c",
-		"lua",
-		"vim",
-		"vimdoc",
-		"query",
-		"rust",
-		"javascript",
-		"html", 
-		"css",
-		"typescript",
-		"svelte",
-		"java",
-		"json",
-		"python",
-		},
-		highlight = {enable = true},
-		auto_install = true
-	    }
+-- TreeSitter
+--
+local treesitter_config = {
+    ensure_installed = {
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    --"rust",
+    --"javascript",
+    --"html",
+    --"css",
+    --"typescript",
+    --"svelte",
+    --"java",
+    --"json",
+    --"python",
+    },
+    highlight = {
+        enable = true,
+        },
+    auto_install = true,
+    }
+require("nvim-treesitter.configs").setup(treesitter_config)
 
-	require("nvim-treesitter.configs").setup(treesitter_config)
-
-	--
-	-- Comment
-	--
-
-	require("Comment").setup()
-
-end
-
+--
+-- Comment
+--
+require("Comment").setup()
 
 --
 -- Lua Line 
