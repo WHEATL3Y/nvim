@@ -121,10 +121,13 @@ vim.cmd[[colorscheme solarized-osaka]]
 --
 -- LSP Zero
 --
-local lsp_zero = require("lsp-zero");
+local lsp_zero = require("lsp-zero")
+local lsp_config = require("lspconfig")
+
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
 end)
+lsp_config.intelephense.setup({})
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -136,6 +139,40 @@ handlers = {
 	require("lspconfig").lua_ls.setup(lua_opts)
     end,
 }
+})
+
+--
+-- LSP autocompletion
+-- TODO: Familiarize myself with this section
+-- copied from https://lsp-zero.netlify.app/v3.x/blog/theprimeagens-config-from-2022.html
+--
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+-- this is the function that loads the extra snippets to luasnip
+-- from rafamadriz/friendly-snippets
+require('luasnip.loaders.from_vscode').lazy_load()
+
+cmp.setup({
+  sources = {
+    {name = 'path'},
+    {name = 'nvim_lsp'},
+    {name = 'nvim_lua'},
+    {name = 'luasnip', keyword_length = 2},
+    {name = 'buffer', keyword_length = 3},
+  },
+  formatting = lsp_zero.cmp_format({details = false}),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 })
 
 --
