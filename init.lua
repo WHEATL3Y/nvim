@@ -104,6 +104,11 @@ local plugins = {
         "nvim-lualine/lualine.nvim",
         dependencies = {"nvim-tree/nvim-web-devicons"},
     },
+
+    -- Gitsigns
+    {
+        "lewis6991/gitsigns.nvim"
+    }
 }
 
 -- Init lazy
@@ -225,3 +230,8 @@ require("Comment").setup()
 --
 local lualine_config = {}
 require("lualine").setup(lualine_config)
+
+--
+-- Gitsigns
+--
+require("gitsigns").setup()
