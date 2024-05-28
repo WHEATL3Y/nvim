@@ -223,9 +223,5 @@ require("Comment").setup()
 --
 -- Lua Line 
 --
-local lualine_config = {
-    sections = {
-        lualine_c = {"filename", "buffers"},
-    }
-}
+local lualine_config = {}
 require("lualine").setup(lualine_config)
