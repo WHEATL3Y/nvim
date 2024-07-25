@@ -30,6 +30,18 @@ Neovim Configuration
 - Themes
     - Soloarized Osaka (Default) - https://github.com/craftzdog/solarized-osaka.nvim
 
+# Installed Language Servers
+- C
+- CSS
+- HTML
+- Java
+- JavaScript
+- Markdown
+- Python
+- Rust
+- Svelte
+- TypeScript
+
 # Dependencies
 - C Complier
     - For Linux: `sudo dnf install g++`
