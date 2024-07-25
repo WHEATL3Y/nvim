@@ -35,12 +35,14 @@ Neovim Configuration
 - CSS
 - HTML
 - Java
-- JavaScript
+- JavaScript/TypeScript
+    - tsserver - https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver)
+- Lua
+    - lua-language-server - https://github.com/LuaLS/lua-language-server
 - Markdown
 - Python
 - Rust
 - Svelte
-- TypeScript
 
 # Dependencies
 - C Complier

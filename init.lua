@@ -117,11 +117,12 @@ require("lazy").setup(plugins)
 --
 -- Theme Configuration
 --
+vim.opt.termguicolors = true
 local osaka_config = {
     transparent = false,
 }
 require("solarized-osaka").setup(osaka_config)
-vim.cmd[[colorscheme solarized-osaka]]
+vim.cmd.colorscheme('solarized-osaka')
 
 --
 -- LSP Zero
@@ -136,14 +137,17 @@ lsp_config.intelephense.setup({})
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-ensure_installed = {},
-handlers = {
-    lsp_zero.default_setup,
-    lua_ls = function()
-	local lua_opts = lsp_zero.nvim_lua_ls()
-	require("lspconfig").lua_ls.setup(lua_opts)
-    end,
-}
+    ensure_installed = {},
+    handlers = {
+        -- Default Handler
+        lsp_zero.default_setup,
+
+        -- Lua Handler
+        lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require("lspconfig").lua_ls.setup(lua_opts)
+        end,
+    }
 })
 
 --
