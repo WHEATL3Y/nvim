@@ -9,6 +9,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true        -- Change tab into spaces
 vim.g.mapleader = " "           -- Set leader key to space
+vim.opt.cc = "80";              -- Max line width indicator
 
 --
 -- netrw
@@ -108,7 +109,18 @@ local plugins = {
     -- Gitsigns
     {
         "lewis6991/gitsigns.nvim"
-    }
+    },
+
+    -- Markdown
+    {
+        'MeanderingProgrammer/markdown.nvim',
+        main = "render-markdown",
+        opts = {},
+        -- name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    },
 }
 
 -- Init lazy
@@ -129,15 +141,18 @@ vim.cmd.colorscheme('solarized-osaka')
 --
 local lsp_zero = require("lsp-zero")
 local lsp_config = require("lspconfig")
+local configs = require("lspconfig/configs")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
 end)
-lsp_config.intelephense.setup({})
+--lsp_config.intelephense.setup({})
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-    ensure_installed = {},
+    ensure_installed = {"lua_ls", "svelte"},
     handlers = {
         -- Default Handler
         lsp_zero.default_setup,
@@ -147,10 +162,16 @@ require("mason-lspconfig").setup({
             local lua_opts = lsp_zero.nvim_lua_ls()
             require("lspconfig").lua_ls.setup(lua_opts)
         end,
+        emmet_ls = function()
+            local emmet_opts = {
+                capabilities = capabilities,
+                filetypes = {"css", "html"}
+            }
+            require("lspconfig").emmet_ls.setup(emmet_opts)
+        end
     }
 })
 
---
 -- LSP autocompletion
 -- TODO: Familiarize myself with this section
 -- copied from https://lsp-zero.netlify.app/v3.x/blog/theprimeagens-config-from-2022.html
@@ -194,6 +215,7 @@ local treesitter_config = {
     "vim",
     "vimdoc",
     "query",
+    "markdown_inline"
     --"rust",
     --"javascript",
     --"html",
@@ -217,7 +239,7 @@ require("nvim-treesitter.configs").setup(treesitter_config)
 local telescope_config = {
 
 }
-require("telescope").setup(telescope_config)   
+require("telescope").setup(telescope_config)
 local builtin = require ("telescope.builtin")
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
@@ -239,3 +261,8 @@ require("lualine").setup(lualine_config)
 -- Gitsigns
 --
 require("gitsigns").setup()
+
+--
+-- Markdown 
+--
+require("render-markdown").setup()
