@@ -31,9 +31,9 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-W><C-K>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-W><C-L>", {noremap=true})
 
 --
--- Get Platform
---
+-- Utilities
 
+-- Get Platform
 local binaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
 local platform = ""
 if binaryFormat == "dll" then
@@ -42,6 +42,17 @@ elseif binaryFormat == "so" then
     platform = "linux"
 elseif binaryFormat == "dylib" then
     platform = "macos"
+end
+
+-- Find project root
+local root = string.gsub(
+        vim.fn.system("git rev-parse --show-toplevel"), "\n", ""
+    )
+if vim.v.shell_error == 0 then
+    print("Found project root at", root)
+else
+    root = vim.loop.cwd()
+    print("Didn't find project root, using", root);
 end
 
 --
@@ -240,11 +251,19 @@ local telescope_config = {
 
 }
 require("telescope").setup(telescope_config)
-local builtin = require ("telescope.builtin")
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set('n', '<leader>ff',
+    function() builtin.find_files({cwd = root}) end, {}
+)
+vim.keymap.set('n', '<leader>fg',
+    function() builtin.live_grep({cwd = root}) end, {}
+)
+vim.keymap.set('n', '<leader>fb',
+    function() builtin.buffers({cwd = root}) end, {}
+)
+vim.keymap.set('n', '<leader>fh',
+    function() builtin.help_tags({cwd = root}) end, {}
+)
 
 --
 -- Comment
