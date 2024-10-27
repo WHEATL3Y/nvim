@@ -30,6 +30,10 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-W><C-J>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-W><C-K>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-W><C-L>", {noremap=true})
 
+-- Move to and open diagnostics
+vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end)
+
 --
 -- Utilities
 
