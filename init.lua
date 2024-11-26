@@ -30,6 +30,10 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-W><C-J>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-W><C-K>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-W><C-L>", {noremap=true})
 
+-- Move to and open diagnostics
+vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end)
+
 --
 -- Utilities
 
@@ -177,6 +181,7 @@ require("mason-lspconfig").setup({
             local lua_opts = lsp_zero.nvim_lua_ls()
             require("lspconfig").lua_ls.setup(lua_opts)
         end,
+        -- Emmet Handler
         emmet_ls = function()
             local emmet_opts = {
                 capabilities = capabilities,
