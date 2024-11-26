@@ -163,7 +163,11 @@ end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-    ensure_installed = {"lua_ls", "svelte"},
+    ensure_installed = {
+        "jdtls",
+        "lua_ls",
+        "svelte",
+    },
     handlers = {
         -- Default Handler
         lsp_zero.default_setup,
@@ -179,7 +183,7 @@ require("mason-lspconfig").setup({
                 filetypes = {"css", "html"}
             }
             require("lspconfig").emmet_ls.setup(emmet_opts)
-        end
+        end,
     }
 })
 
