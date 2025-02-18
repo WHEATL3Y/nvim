@@ -136,6 +136,34 @@ local plugins = {
         -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
         -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     },
+    -- Neotest
+    {
+        "rcasia/neotest-java",
+        ft = "java",
+        dependencies = {
+            "mfussenegger/nvim-jdtls",
+            "mfussenegger/nvim-dap", -- for the debugger
+            "rcarriga/nvim-dap-ui", -- recommended
+            "theHamsta/nvim-dap-virtual-text", -- recommended
+        },
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        opts = {
+            adapters = {
+                ["neotest-java"] = {
+                    junit_jar = nil,
+                    incremental_build = true
+                }
+            }
+        }
+    }
 }
 
 -- Init lazy
@@ -291,6 +319,16 @@ require("lualine").setup(lualine_config)
 require("gitsigns").setup()
 
 --
--- Markdown 
+-- markdown 
 --
 require("render-markdown").setup()
+
+--
+-- neotest 
+--
+require("neotest").setup({
+    adapters = {
+        require("neotest-java") ({
+        })
+    }
+})
