@@ -36,7 +36,7 @@ vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end)
 
 --
 -- Utilities
-
+--
 -- Get Platform
 local binaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
 local platform = ""
@@ -263,14 +263,14 @@ local treesitter_config = {
     "vim",
     "vimdoc",
     "query",
-    "markdown_inline"
+    "markdown_inline",
     --"rust",
     --"javascript",
     --"html",
     --"css",
     --"typescript",
     --"svelte",
-    --"java",
+    "java",
     --"json",
     --"python",
     },
@@ -332,3 +332,8 @@ require("neotest").setup({
         })
     }
 })
+
+-- IN PROGRESS
+-- Neotest shortcuts
+-- vim.keymap.set("n", "<leader>ta", require("neotest").run.run(vim.fn.expand("%")))
+
