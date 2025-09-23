@@ -35,6 +35,8 @@ Some remaps, default shortcuts, as well as other good info can be found [here](h
     - https://github.com/lewis6991/gitsigns.nvim
 - Markdown Previewer - markdown
     - https://github.com/MeanderingProgrammer/markdown.nvim
+- Rip Substitute
+    - https://github.com/chrisgrieser/nvim-rip-substitute
 - Themes
     - Soloarized Osaka (Default) - https://github.com/craftzdog/solarized-osaka.nvim
 
