@@ -199,6 +199,7 @@ require("mason-lspconfig").setup({
         "jdtls",
         "lua_ls",
         "svelte",
+        "clangd"    -- C++
     },
     handlers = {
         -- Default Handler
@@ -259,6 +260,7 @@ cmp.setup({
 local treesitter_config = {
     ensure_installed = {
     "c",
+    "cpp",
     "lua",
     "vim",
     "vimdoc",
