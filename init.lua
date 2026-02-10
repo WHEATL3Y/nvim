@@ -299,8 +299,18 @@ require("nvim-treesitter.configs").setup(treesitter_config)
 --
 -- Telescope
 --
+local actions = require("telescope.actions");
 local telescope_config = {
-
+    -- defaults = {
+    --     mappings = {
+    --         i = {
+    --             ["<C-t>"] = actions.select_tab,
+    --         },
+    --         n = {
+    --             ["<C-t>"] = actions.select_tab,
+    --         },
+    --     },
+    -- },
 }
 require("telescope").setup(telescope_config)
 local builtin = require("telescope.builtin")
